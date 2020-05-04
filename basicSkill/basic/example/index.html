@@ -7,17 +7,25 @@
 </head>
 <body>
 <script>
-  const person = {
-    name: 'jws',
-    age: 29,
-    introduce() {
-      console.log(`Hello every one! My name is ${this.name}. I'm ${this.age} yers old.`)
-    }
-  }
+  function testArrayLike() {
+    console.log(arguments) //Arguments(3) ["a", "b", "c", callee: ƒ, Symbol(Symbol.iterator): ƒ]
+                           // 0: "a"
+                           // 1: "b"
+                           // 2: "c"
 
-  // // 此时 this 只想 person
-  // console.log(person.introduce()) // Hello every one! My name is jws. I'm 29 yers old.
+    console.log(arguments.length) // 3
+    console.log(arguments.slice) // undefind
+
+    console.log(Array.isArray(arguments)) // false
+
+    // 通过 call/apply 方法将 arguments 转换为数组
+    const array = Array.prototype.slice.apply(arguments)
+    console.log(Array.isArray(array)) // true
+    console.log(array) // ['a', 'b', 'c']
+  }
+  testArrayLike('a', 'b', 'c')
+
 </script>
-<script src="./bind.js"></script>
+<!-- <script src="./bind.js"></script> -->
 </body>
 </html>
