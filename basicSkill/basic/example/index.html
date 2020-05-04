@@ -7,25 +7,8 @@
 </head>
 <body>
 <script>
-  function testArrayLike() {
-    console.log(arguments) //Arguments(3) ["a", "b", "c", callee: ƒ, Symbol(Symbol.iterator): ƒ]
-                           // 0: "a"
-                           // 1: "b"
-                           // 2: "c"
-
-    console.log(arguments.length) // 3
-    console.log(arguments.slice) // undefind
-
-    console.log(Array.isArray(arguments)) // false
-
-    // 通过 call/apply 方法将 arguments 转换为数组
-    const array = Array.prototype.slice.apply(arguments)
-    console.log(Array.isArray(array)) // true
-    console.log(array) // ['a', 'b', 'c']
-  }
-  testArrayLike('a', 'b', 'c')
 
 </script>
-<!-- <script src="./bind.js"></script> -->
+<script src="./myCall.js"></script>
 </body>
 </html>
