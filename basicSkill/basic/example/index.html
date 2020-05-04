@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  const person = {
+    name: 'jws',
+    age: 29,
+    introduce() {
+      console.log(`Hello every one! My name is ${this.name}. I'm ${this.age} yers old.`)
+    }
+  }
+
+  // // 此时 this 只想 person
+  // console.log(person.introduce()) // Hello every one! My name is jws. I'm 29 yers old.
+</script>
+<script src="./bind.js"></script>
+</body>
+</html>
