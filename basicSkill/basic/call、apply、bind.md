@@ -34,7 +34,7 @@ console.log(person.introduce.call(myMather)) // Hello every one! My name is mama
 
 #### [apply](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply)
 
-apply 和 call 的唯一区别就是 call 方法接受的是参数列表，而 apply 方法接受的是一个参数数组，apply 函数的语法为 `func.apply(thisArg, [argsArray])`, 举个栗子
+apply 和 call 的唯一区别就是 call 方法接受的是参数列表，而 apply 方法接受的是一个参数数组，apply 函数的语法为 `func.apply(thisArg, [argsArray])`, 举个🌰
 
 ```js
 function family(...familyMember) {
@@ -47,7 +47,7 @@ console.log(family.apply({name: 'jws'}, ['爸爸', '妈妈', '妹妹'])) // jws�
 ```
 #### [bind](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
 
-bind 和上面两个有所不同，当 bind 被调用时，会给原函数绑定一个 this，并返回一个新函数,举个栗子
+bind 和上面两个有所不同，当 bind 被调用时，会给原函数绑定一个 this，并返回一个新函数,举个🌰
 
 ```js
 const pet = {

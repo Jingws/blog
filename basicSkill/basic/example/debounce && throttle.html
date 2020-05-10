@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<label for="inp1">没有防抖的input: </label>
+<input type="text" id='ipt1'>
+<br>
+<label for="inp2">防抖后的input: </label>
+<input type="text" id="ipt2">
+<br>
+<label for="inp3">截流后的input: </label>
+<input type="text" id="ipt3">
+
+<script>
+function ajax(content) {
+  console.log('ajax request ' + content)
+}
+
+let ipt1 = document.getElementById('ipt1')
+ipt1.addEventListener('keyup', function(e) {
+  ajax(e.target.value)
+})
+
+// debounce
+function debounce(fun, delay) {
+  return function(args) {
+    let that = this
+    let _args = args
+    clearTimeout(fun.id)
+    fun.id = setTimeout(function() {
+      fun.call(that, _args)
+    }, delay)
+  }
+}
+
+let ipt2 = document.getElementById('ipt2')
+let debounceAjax = debounce(ajax, 1000)
+ipt2.addEventListener('keyup', function(e) {
+  debounceAjax(e.target.value)
+})
+
+// throttle
+function throttle(fun, delay) {
+  let last,
+      deferTimer
+  return function(args) {
+    let that = this
+    let _args = args
+    let now = +new Date()
+    // 如果 上次触发时间加延迟大于了当前时间 重新记时
+    if (last && now < last + delay) {
+      console.log('a')
+      clearTimeout(deferTimer)
+      deferTimer = setTimeout(function () {
+          last = now
+          fun.call(that, _args)
+      }, delay)
+    } else {
+      console.log('b')
+      last = now
+      fun.call(that,_args)
+    }
+  }
+}
+
+let ipt3 = document.getElementById('ipt3')
+let throttleAjax = throttle(ajax, 1000)
+ipt3.addEventListener('keyup', function(e) {
+  throttleAjax(e.target.value)
+})
+</script>
+</body>
+</html>
